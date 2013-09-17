@@ -5,6 +5,7 @@ require 'minitest/pride'
 
 class NewExercisesTest < Minitest::Test
   
+
   def test_pick_numbers_divisible_by_two_and_three
     numbers = (0..30)
     selected = []
@@ -15,5 +16,6 @@ class NewExercisesTest < Minitest::Test
     end
     assert_equal [0, 6, 12, 18, 24, 30], selected 
   end
+
 
 end
