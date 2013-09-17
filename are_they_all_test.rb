@@ -1,5 +1,6 @@
 gem 'minitest'
 require 'minitest'
+require 'minitest/autorun'
 require 'minitest/pride'
 
 class AreTheyAllTest < Minitest::Test
@@ -8,43 +9,67 @@ class AreTheyAllTest < Minitest::Test
     numbers = [0, 0, 0, 0, 1, 0, 0, 0]
     all_zeros = true
     numbers.each do |number|
-      # write code here
+      if number != 0
+        all_zeros = false
+      end
     end
     refute all_zeros
   end
 
   def test_all_zeros
-    skip
+
     numbers = [0, 0, 0, 0, 0, 0, 0, 0]
-    # write code here
+    all_zeros = false
+    numbers.each do |number|
+      unless number != 0
+        all_zeros = true
+      end
+    end
     assert all_zeros
   end
 
   def test_all_gone
-    skip
+    
     words = %w(gone gone gone gone gone gone gone)
-    # write code here
+    all_gone = false
+    words.each do |word|
+      unless word != 'gone'
+        all_gone = true
+      end
+    end
     assert all_gone
   end
 
   def test_not_all_gone
-    skip
     words = %w(gone gone gone gone gone gone gone yepp)
-    # write code here
+    all_gone = true
+    words.each do |word|
+      unless word == 'gone'
+        all_gone = false
+      end
+    end
     refute all_gone
   end
 
   def test_all_empty
-    skip
     words = ["", "", "", "", ""]
-    # write code here
+    all_empty = false
+    words.each do |word|
+      unless  word.length > 0
+        all_empty = true
+      end
+    end
     assert all_empty
   end
 
   def test_not_all_empty
-    skip
     words = ["full", "", "", "", "", ""]
-    # write code here
+    all_empty = true
+    words.each do |word|
+      if word.length > 0
+        all_empty = false
+      end
+    end
     refute all_empty
   end
 end
