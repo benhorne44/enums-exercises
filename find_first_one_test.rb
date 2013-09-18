@@ -18,14 +18,7 @@ class FindFirstOneTest < Minitest::Test
     thing5 = Thing.new('weird')
 
     things = [thing1, thing2, thing3, thing4, thing5]
-
-    found = nil
-    things.each do |thing|
-      if thing.weird?
-        found = thing
-        break
-      end
-    end
+    found = things.find {|thing| thing.weird?}
     assert_equal thing3.object_id, found.object_id
   end
 
@@ -44,14 +37,7 @@ class FindFirstOneTest < Minitest::Test
 
     unicorns = [unicorn1, unicorn2, unicorn3, unicorn4, unicorn5]
 
-    found = nil
-
-    unicorns.each do |unicorn|
-      if unicorn.pink?
-        found = unicorn 
-        break
-      end
-    end
+    found = unicorns.find { |unicorn| unicorn.pink? }
 
     assert_equal unicorn4.object_id, found.object_id
   end
